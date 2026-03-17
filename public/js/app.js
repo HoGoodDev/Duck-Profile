@@ -63,7 +63,7 @@ async function loadDuck(duck) {
     for (let row of row_labels) {
         let elem = document.getElementById(`${row}_row`);
         if (row === "id") {
-            displayAttribute(elem, duck._id);
+            displayDuckIdLink(elem, duck._id);
         } else {
             displayAttribute(elem, duck[row]);
         }
