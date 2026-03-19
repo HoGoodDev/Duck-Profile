@@ -75,7 +75,19 @@ async function loadDuck(duck) {
 }
 
 function displayAttribute(element, value) {
-  element.querySelector(".stat_val_span").innerHTML = value;
+  const span = element.querySelector(".stat_val_span");
+  if (element.id === "adjectives_row") {
+    const adjectives = Array.isArray(value)
+      ? value
+      : String(value)
+          .split(",")
+          .map((s) => s.trim());
+    span.innerHTML = adjectives
+      .map((adj) => `<span class="adjective-badge">${adj}</span>`)
+      .join("");
+  } else {
+    span.innerHTML = value;
+  }
 }
 
 function displayStat(element, value) {

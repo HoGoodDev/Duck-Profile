@@ -1,28 +1,35 @@
-/* ── Fonts ──────────────────────────────────────────────── */
+/* ── Design Tokens ──────────────────────────────────────── */
 :root {
+  /* fonts */
   --font-display: "Fredoka", sans-serif;
   --font-body: "Nunito", sans-serif;
-}
 
-/* ── Color Palette ─────────────────────────────────────── */
-:root {
+  /* backgrounds */
   --bg: #0e0f14;
   --bg2: #15171f;
   --bg3: #1c1f2b;
   --surface: #22263a;
 
+  /* accents */
   --accent: #7c6af7;
   --accent2: #f76ac8;
 
+  /* stat colors */
   --strength: #f5a623;
   --health: #4fc3f7;
   --intelligence: #66bb6a;
   --focus: #ef5350;
   --kindness: #ab47bc;
 
+  /* text */
   --text: #eef0f8;
   --text-mid: #8b90aa;
   --text-dim: #4a4f6a;
+
+  /* shared */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.2s ease;
 }
 
 /* ── Base ───────────────────────────────────────────────── */
@@ -46,125 +53,347 @@ h6,
   font-family: var(--font-display);
 }
 
-h1 {
-  color: var(--text);
-}
-
 /* ── Layout ─────────────────────────────────────────────── */
 #main_container {
-  margin-top: 4em;
+  margin-top: 3em;
+  padding-bottom: 4em;
 }
 
-#duck_info_container > div {
-  border-bottom: 1px solid var(--surface);
-  padding: 1em auto;
+/* ── Duck Selector ──────────────────────────────────────── */
+.section-label {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 
-/* ── Stat labels ────────────────────────────────────────── */
-.stat_text {
-  width: 120px;
-  font-weight: bold;
+.selector-card {
+  background-color: var(--bg3);
+  border: 1px solid var(--surface);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.5rem;
+}
+
+.selector-select {
+  background-color: transparent;
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+.selector-select:focus {
+  background-color: transparent;
+  color: var(--text);
+  border: none;
+}
+
+/* ── Duck Profile Card ──────────────────────────────────── */
+.duck-profile-card {
+  background-color: var(--bg3);
+  border: 1px solid var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  height: 100%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.duck-profile-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.15rem;
+  min-height: 2.5rem;
+}
+
+.duck-profile-assembler {
   color: var(--text-mid);
+  font-size: 0.95rem;
+  margin-bottom: 0;
 }
 
-.info-cell {
-  width: calc(100% - 150px);
+.duck-profile-assembler strong {
   color: var(--text);
 }
 
-/* ── Progress bars ──────────────────────────────────────── */
+.profile-divider {
+  border-color: var(--surface);
+  margin: 1rem 0;
+}
+
+/* ── Info Rows ──────────────────────────────────────────── */
+#duck_info_container {
+  display: block;
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--surface);
+}
+
+.profile-info-row:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  width: 100px;
+  flex-shrink: 0;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+
+.profile-info-value {
+  flex: 1;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.profile-info-value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.profile-info-value a:hover {
+  color: var(--accent2);
+  text-decoration: underline;
+}
+
+/* ── Adjective Badges ───────────────────────────────────── */
+.adjective-badge {
+  display: inline-block;
+  border: 1px solid var(--surface);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  margin-right: 0.35rem;
+  margin-bottom: 0.2rem;
+  background-color: var(--bg2);
+}
+
+/* ── Attributes Section ─────────────────────────────────── */
+.attributes-section {
+  margin-top: 1.25rem;
+}
+
+.attributes-header {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Stat Rows ──────────────────────────────────────────── */
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.stat-label {
+  width: 100px;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.stat-number {
+  width: 1.25rem;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* ── Progress Bars ──────────────────────────────────────── */
 .progress {
-  width: 300px;
+  height: 10px;
   background-color: var(--surface);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #strength_bar .progress-bar {
   background-color: var(--strength) !important;
+  box-shadow: 0 0 8px var(--strength);
 }
 #health_bar .progress-bar {
   background-color: var(--health) !important;
+  box-shadow: 0 0 8px var(--health);
 }
 #intelligence_bar .progress-bar {
   background-color: var(--intelligence) !important;
+  box-shadow: 0 0 8px var(--intelligence);
 }
 #focus_bar .progress-bar {
   background-color: var(--focus) !important;
+  box-shadow: 0 0 8px var(--focus);
 }
 #kindness_bar .progress-bar {
   background-color: var(--kindness) !important;
+  box-shadow: 0 0 8px var(--kindness);
 }
 
-/* ── Duck viewer ────────────────────────────────────────── */
+/* ── Duck Viewer ────────────────────────────────────────── */
 #ThreeDuck {
   min-height: 400px;
   background-color: var(--bg2);
-  border-radius: 8px;
-  img,
-  .placeholder {
-    display: none;
-  }
+  border-radius: var(--radius);
+  border: 1px solid var(--surface);
+  overflow: hidden;
+}
+
+#ThreeDuck img,
+#ThreeDuck .placeholder {
+  display: none;
 }
 
 #ThreeDuck.waiting {
   position: relative;
-  img,
-  .placeholder {
-    display: block;
-  }
-
-  img {
-    position: absolute;
-    width: 20%;
-    top: 40%;
-    left: 40%;
-  }
-  img.microwave {
-    width: 70%;
-    top: 5%;
-    left: 10%;
-  }
-  .placeholder {
-    color: var(--text-mid);
-    text-align: center;
-    font-size: 2em;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ── Duck select ────────────────────────────────────────── */
+#ThreeDuck.waiting img,
+#ThreeDuck.waiting .placeholder {
+  display: block;
+}
+
+#ThreeDuck.waiting img {
+  position: absolute;
+  width: 20%;
+  top: 40%;
+  left: 40%;
+}
+
+#ThreeDuck.waiting img.microwave {
+  width: 70%;
+  top: 5%;
+  left: 10%;
+}
+
+#ThreeDuck.waiting .placeholder {
+  color: var(--text-mid);
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: var(--font-display);
+  padding: 2rem;
+}
+
+/* ── Form Select ────────────────────────────────────────── */
 .form-label {
   color: var(--text-mid);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .form-select {
   background-color: var(--bg3);
   color: var(--text);
-  border-color: var(--surface);
+  border: 1px solid var(--surface);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
 .form-select:focus {
   background-color: var(--bg3);
   color: var(--text);
   border-color: var(--accent);
-  box-shadow: 0 0 0 0.2rem rgba(124, 106, 247, 0.25);
+  box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.2);
 }
 
-/* ── Chat section ───────────────────────────────────────── */
+/* ── Chat Card ──────────────────────────────────────────── */
 .card {
   background-color: var(--bg3);
-  border-color: var(--surface);
+  border: 1px solid var(--surface);
+  border-radius: var(--radius);
   color: var(--text);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .card-header {
   background-color: var(--surface);
   color: var(--text);
-  border-bottom-color: var(--bg2);
+  border-bottom: 1px solid var(--bg2);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.25rem;
+  font-family: var(--font-display);
+}
+
+.duck-chat-header {
+  display: flex;
+  align-items: center;
+}
+
+.duck-chat-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.duck-chat-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.duck-chat-subtitle {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: var(--font-body);
+  margin-top: 0.1rem;
 }
 
 #chat_input {
   background-color: var(--bg2);
   color: var(--text);
-  border-color: var(--surface);
+  border: 1px solid var(--surface);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
 #chat_input::placeholder {
@@ -175,26 +404,47 @@ h1 {
   background-color: var(--bg2);
   color: var(--text);
   border-color: var(--accent);
-  box-shadow: 0 0 0 0.2rem rgba(124, 106, 247, 0.25);
+  box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.2);
 }
 
+/* ── Buttons ────────────────────────────────────────────── */
 #startChatButton,
 #chat_form .btn-primary {
   background-color: var(--accent);
   border-color: var(--accent);
-  color: var(--text);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 
 #startChatButton:hover,
 #chat_form .btn-primary:hover {
   background-color: var(--accent2);
   border-color: var(--accent2);
+  box-shadow: 0 4px 16px rgba(247, 106, 200, 0.35);
+  transform: translateY(-1px);
 }
 
- text-align: center;
-    font-size: 2em;
-  }
+#startChatButton:active,
+#chat_form .btn-primary:active {
+  transform: translateY(0);
 }
+
+/* ── Chat Messages ──────────────────────────────────────── */
+#chat_messages {
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  margin-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface) transparent;
+}
+
 #chatBody {
   display: none;
 }
