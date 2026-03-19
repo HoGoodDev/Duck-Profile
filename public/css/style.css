@@ -1,24 +1,104 @@
+/* ── Fonts ──────────────────────────────────────────────── */
+:root {
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "Nunito", sans-serif;
+}
+
+/* ── Color Palette ─────────────────────────────────────── */
+:root {
+  --bg: #0e0f14;
+  --bg2: #15171f;
+  --bg3: #1c1f2b;
+  --surface: #22263a;
+
+  --accent: #7c6af7;
+  --accent2: #f76ac8;
+
+  --strength: #f5a623;
+  --health: #4fc3f7;
+  --intelligence: #66bb6a;
+  --focus: #ef5350;
+  --kindness: #ab47bc;
+
+  --text: #eef0f8;
+  --text-mid: #8b90aa;
+  --text-dim: #4a4f6a;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-header,
+.form-label,
+.stat_text,
+.form-select,
+.btn {
+  font-family: var(--font-display);
+}
+
+h1 {
+  color: var(--text);
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
 #main_container {
   margin-top: 4em;
 }
-.stat_text {
-  width: 120px;
-  font-weight: bold;
-}
-.progress {
-  width: 300px;
-}
-.info-cell {
-  width: calc(100% - 150px);
-}
+
 #duck_info_container > div {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--surface);
   padding: 1em auto;
 }
 
+/* ── Stat labels ────────────────────────────────────────── */
+.stat_text {
+  width: 120px;
+  font-weight: bold;
+  color: var(--text-mid);
+}
+
+.info-cell {
+  width: calc(100% - 150px);
+  color: var(--text);
+}
+
+/* ── Progress bars ──────────────────────────────────────── */
+.progress {
+  width: 300px;
+  background-color: var(--surface);
+}
+
+#strength_bar .progress-bar {
+  background-color: var(--strength) !important;
+}
+#health_bar .progress-bar {
+  background-color: var(--health) !important;
+}
+#intelligence_bar .progress-bar {
+  background-color: var(--intelligence) !important;
+}
+#focus_bar .progress-bar {
+  background-color: var(--focus) !important;
+}
+#kindness_bar .progress-bar {
+  background-color: var(--kindness) !important;
+}
+
+/* ── Duck viewer ────────────────────────────────────────── */
 #ThreeDuck {
   min-height: 400px;
-  background-color: black;
+  background-color: var(--bg2);
+  border-radius: 8px;
   img,
   .placeholder {
     display: none;
@@ -44,8 +124,74 @@
     left: 10%;
   }
   .placeholder {
-    color: white;
+    color: var(--text-mid);
     text-align: center;
+    font-size: 2em;
+  }
+}
+
+/* ── Duck select ────────────────────────────────────────── */
+.form-label {
+  color: var(--text-mid);
+}
+
+.form-select {
+  background-color: var(--bg3);
+  color: var(--text);
+  border-color: var(--surface);
+}
+
+.form-select:focus {
+  background-color: var(--bg3);
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 106, 247, 0.25);
+}
+
+/* ── Chat section ───────────────────────────────────────── */
+.card {
+  background-color: var(--bg3);
+  border-color: var(--surface);
+  color: var(--text);
+}
+
+.card-header {
+  background-color: var(--surface);
+  color: var(--text);
+  border-bottom-color: var(--bg2);
+}
+
+#chat_input {
+  background-color: var(--bg2);
+  color: var(--text);
+  border-color: var(--surface);
+}
+
+#chat_input::placeholder {
+  color: var(--text-dim);
+}
+
+#chat_input:focus {
+  background-color: var(--bg2);
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 106, 247, 0.25);
+}
+
+#startChatButton,
+#chat_form .btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+#startChatButton:hover,
+#chat_form .btn-primary:hover {
+  background-color: var(--accent2);
+  border-color: var(--accent2);
+}
+
+ text-align: center;
     font-size: 2em;
   }
 }
