@@ -166,6 +166,26 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(124, 106, 247, 0.1);
 }
 
+.select-duck-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.duck-select-prompt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0.4rem 0 0.5rem;
+}
+
 .duck-profile-name {
   font-family: var(--font-display);
   font-weight: 700;

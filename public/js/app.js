@@ -42,6 +42,10 @@ if (PRELOADED_DUCK) {
 }
 async function resetDuckUI() {
   await loadDuck(activeDuck);
+  const prompt = document.getElementById("duck_select_prompt");
+  if (prompt) prompt.style.display = "none";
+  document.getElementById("name_row").style.display = "";
+  document.getElementById("assembler_row").style.display = "";
   document.getElementById("chat_section").style.display = "block";
   duckReadyName.textContent = activeDuck.name;
   document.getElementById("duckChatSubtitle").textContent =

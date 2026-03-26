@@ -33,10 +33,9 @@
 
     <% if(!duck){ %>
     <div class="mb-4">
-      <p class="section-label">Please select a duck</p>
       <div class="selector-card">
         <select id="duckSelect" name="duckSelect" class="form-select selector-select">
-          <option selected disabled>Please Select a Duck</option>
+          <option value="" selected disabled hidden>Select a duck here!</option>
         </select>
       </div>
     </div>
@@ -46,7 +45,6 @@
       <div class="col-md-6">
         <div id="ThreeDuck" class="waiting">
           <img src="/images/Loading_Duck 1.gif" id="loading_img" alt="" />
-          <div class="placeholder">Please select a duck to load</div>
         </div>
       </div>
 
@@ -54,10 +52,13 @@
         <div class="duck-profile-card">
 
           <!-- Name & Assembler -->
-          <div id="name_row">
+          <% if (!duck) { %>
+          <div id="duck_select_prompt" class="duck-select-prompt">Please select a duck</div>
+          <% } %>
+          <div id="name_row" <% if (!duck) { %>style="display:none"<% } %>>
             <h2 class="duck-profile-name"><span class="stat_val_span"><%= duck ? duck.name : '' %></span></h2>
           </div>
-          <div id="assembler_row" class="duck-profile-assembler">
+          <div id="assembler_row" class="duck-profile-assembler" <% if (!duck) { %>style="display:none"<% } %>>
             Assembled by <strong><span class="stat_val_span"><%= duck ? duck.assembler : '' %></span></strong>
           </div>
 
